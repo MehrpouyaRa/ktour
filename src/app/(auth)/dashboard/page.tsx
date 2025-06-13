@@ -2,10 +2,10 @@
 
 import AppButton from '@/component/common/card/AppButton'
 import AppCard from '@/component/common/AppCard'
-import useAuth from '@/component/hooks/useAuth'
 import React from 'react'
+import useAuth from '@/component/hooks/useAuth'
 
-function index() {
+function Page() {
   const { logout } = useAuth()
 
   return (
@@ -20,4 +20,4 @@ function index() {
   )
 }
 
-export default index
+export default Page
