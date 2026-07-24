@@ -6,7 +6,9 @@ function layout({ children }: { children: ReactNode }) {
     return (
         <HydrationGate>
             <AuthGate>
-                {children}
+                <div className="flex flex-col w-full gap-8 mt-4">
+                    {children}
+                </div>
             </AuthGate>
         </HydrationGate>
     )

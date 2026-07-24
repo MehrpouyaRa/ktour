@@ -1,16 +1,16 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Vazirmatn, Geist } from "next/font/google";
 import "./globals.css";
 import ReactQuery from "@/lib/providers/ReactQuery";
+import { cn } from "@/lib/utils";
+import { ToastContainer } from 'react-toastify';
+import Header from "@/component/layout/Header";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
+const geist = Geist({ subsets: ['latin'], variable: '--font-sans' });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
+const font = Vazirmatn({
+  variable: '--vazirmatn',
+  subsets: ["arabic"]
 });
 
 export const metadata: Metadata = {
@@ -25,11 +25,13 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" dir="rtl" className={cn("font-sans", geist.variable)}>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${font.className} antialiased`}
       >
+        <ToastContainer limit={1} />
         <ReactQuery>
+          <Header />
           {children}
         </ReactQuery>
       </body>

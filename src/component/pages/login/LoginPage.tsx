@@ -4,34 +4,37 @@ import AppCard from '@/component/common/AppCard';
 import useAuth from '@/component/hooks/useAuth';
 import React from 'react'
 import useLoginPage from './hook';
-import AppButton from '@/component/common/card/AppButton';
+import Field from '@/component/common/ui/Field';
+import { Input } from '@/component/common/ui/input';
+import AccountIcon from '@iconify-react/line-md/account';
+import { Button } from '@/component/common/ui/button';
 
 function LoginPage() {
   const { form: { handleSubmit, formState: { errors }, register } } = useLoginPage()
-  const { login, isPending } = useAuth()
+  const { login, loading } = useAuth()
 
   return (
     <form onSubmit={handleSubmit(login)}>
-      <div className='flex justify-center items-center mt-8'>
-        <AppCard>
-          <input
-            type="text"
-            placeholder='Phone number'
-            className="border p-2"
-            {
-            ...register('number', {
-              required: 'Phone number is required',
-              pattern: {
-                value: /^((\+98|0)9\d{9})$/,
-                message: 'Please enter a valid Iranian phone number'
-              }
-            })}
-          />
-          {errors.number?.message ? <span className='text-sm text-red-800'>{errors.number.message}</span> : null}
-          <AppButton type="submit" loading={isPending}>Login</AppButton>
+      <div className='flex justify-center items-center mt-8 min-h-[70vh]'>
+        <AppCard className='flex flex-col gap-y-8'>
+          <div className='flex flex-col gap-y-4'>
+            <strong className='text-xl text-center md:text-3xl font-extrabold'>ورود به داشبورد</strong>
+            <div className="w-[60px] h-[4px] m-auto rounded-full bg-[var(--color-secondary)]"></div>
+          </div>
+          <div className='flex flex-col mt-4'>
+            <Field caption='نام کاربری' Icon={AccountIcon} error={errors?.email?.message || ""}>
+              <Input {...register('email', { required: 'نام کاربری را وارد کنید' })} placeholder='نام کاربری' />
+            </Field>
+          </div>
+          <div className='flex flex-col'>
+            <Field caption='رمز عبور' Icon={AccountIcon} error={errors?.password?.message || ""}>
+              <Input type='password' {...register('password', { required: 'رمز عبور را وارد کنید' })} placeholder='رمز عبور' />
+            </Field>
+          </div>
+          <Button type="submit" isLoading={loading}>ورود</Button>
         </AppCard>
-      </div>
-    </form>
+      </div >
+    </form >
   );
 }
 

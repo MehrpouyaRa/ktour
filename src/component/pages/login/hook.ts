@@ -1,11 +1,8 @@
+import { ILogin } from "@/lib/types/auth";
 import { useForm } from "react-hook-form";
 
-interface form {
-    number: number
-}
-
 function useLoginPage() {
-    const form = useForm<form>();
+    const form = useForm<ILogin>();
 
     return { form }
 }

@@ -1,8 +1,8 @@
-import React, { ReactNode } from 'react'
+import React, { HTMLAttributes, ReactNode } from 'react'
 
-function AppCard({ children }: { children: ReactNode }) {
+function AppCard({ children, ...props }: { children: ReactNode } & HTMLAttributes<HTMLDivElement>) {
     return (
-        <div className='flex flex-col bg-white w-[95%] max-w-[400px] p-8 rounded-lg gap-y-4'>
+        <div {...props} className='flex flex-col border bg-white w-[90%] max-w-[400px] p-12 rounded-lg gap-y-4'>
             {children}
         </div>
     )
