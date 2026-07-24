@@ -11,8 +11,6 @@ import AccountIcon from '@iconify-react/line-md/account';
 import EditIcon from '@iconify-react/line-md/edit';
 import PersonAddTwotoneIcon from '@iconify-react/line-md/person-add-twotone';
 import BarcodeFillIcon from '@iconify-react/si/barcode-fill';
-import Add2SharpIcon from '@iconify-react/material-symbols-light/add-2-sharp';
-import CheckIndeterminateSmallSharpIcon from '@iconify-react/material-symbols-light/check-indeterminate-small-sharp';
 import PlusIcon from '@iconify-react/line-md/plus';
 import MinusIcon from '@iconify-react/line-md/minus';
 

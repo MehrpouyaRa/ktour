@@ -1,7 +1,7 @@
 import { cn } from '@/lib/utils'
 import React, { ReactNode } from 'react'
 
-function Field({ children, caption, Icon, error }: { children: ReactNode, Icon: any, caption: string, error: string }) {
+function Field({ children, caption, Icon, error }: { children: ReactNode, Icon: React.ElementType, caption: string, error: string }) {
     return (
         <div className='flex flex-col gap-1 md:gap-2'>
             <strong className='text-sm md:text-md md:mr-4'>{caption}</strong>

@@ -16,12 +16,13 @@ function useAuth() {
       setLoading(true)
       const supabase = await createClient()
       const { data } = await supabase.auth.signInWithPassword(form)
+      if (!data.session?.access_token) return
 
       update_data({
-        tokens: { access_token: data.session?.access_token! },
+        tokens: { access_token: data.session.access_token },
         user: {
-          email: data.user?.email!,
-          id: data.user?.id!
+          email: data.user.email!,
+          id: data.user.id!
         }
       });
       router.push('/dashboard')

@@ -1,4 +1,3 @@
-import React from 'react'
 import { Bounce, toast, ToastOptions } from 'react-toastify'
 
 function useToast() {
@@ -16,6 +15,7 @@ function useToast() {
             theme: "light",
             style: { fontFamily: "var(--vazirmatn)" },
             transition: Bounce,
+            ...props
         })
     }
     return { notify }

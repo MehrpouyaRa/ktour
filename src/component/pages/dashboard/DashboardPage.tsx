@@ -8,7 +8,7 @@ import React, { useEffect, useState } from 'react'
 
 function DashboardPage() {
   const [list, setList] = useState<IBook[]>([])
-  const [page, setPage] = useState(1)
+  const [page] = useState(1)
 
   async function fetch() {
     const pageSize = 100
