@@ -1,5 +1,9 @@
 import LoginPage from '@/component/pages/login/LoginPage'
-import React from 'react'
+import { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: "ورود",
+};
 
 function Page() {
     return <LoginPage />
