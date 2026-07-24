@@ -3,6 +3,7 @@ import { HydrationGate } from '@/lib/providers/HydrationGate'
 import { Metadata } from 'next';
 import React, { ReactNode } from 'react'
 
+// Meta Data
 export const metadata: Metadata = {
   title: "ناحیه کاربری",
 };
