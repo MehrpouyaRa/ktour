@@ -26,8 +26,7 @@ function useLandingForm() {
             formData.children_count = typeof formData.children_count !== "number" ? parseInt(formData.children_count) : formData.children_count
             const { error } = await supabase
                 .from("booking")
-                .insert(formData)
-                .select();
+                .insert(formData);
             if (error) throw error
             setLoading(false)
             notify({ message: 'ثبت نام شما انجام شد با شما تماس خواهیم گرفت', status: 'success' })
