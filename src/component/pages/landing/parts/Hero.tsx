@@ -21,11 +21,10 @@ function Hero() {
                 <div className="relative w-full md:w-[40%] flex flex-col gap-2 md:gap-6">
                     <div className="flex flex-col gap-1">
                         <strong className='text-4xl md:text-5xl'>ثبت‌نام</strong>
-                        <strong className='text-[var(--color-primary-hover)] text-3xl md:text-5xl'>پویش پیاده روی</strong>
+                        <strong className='text-[var(--color-primary-hover)] text-3xl md:text-4xl'>پویش پیاده روی مهرجواد</strong>
+                        <strong className='text-[var(--color-primary-hover)] text-2xl md:text-3xl'>مسیر هشتم رضوی</strong>
                     </div>
                     <p className='text-md md:text-lg px-8 md:px-0 font-medium md:font-light'>
-                        <strong className='font-bold'>مجمع عالی جوادالائمه</strong>
-                        <br />
                         <span className=''>هم قدم با جوادلائمه به سوی رضای خدا</span>
                     </p>
                     <HeroIcons />
