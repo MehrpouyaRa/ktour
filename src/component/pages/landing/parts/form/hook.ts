@@ -3,33 +3,33 @@ import { createClient } from "@/lib/helpers/supabase"
 import { IBook } from "@/lib/types/booking";
 import { useState } from "react";
 import { useForm } from "react-hook-form"
+import { useBoolean } from 'usehooks-ts'
 
 export type IBookForm = Omit<IBook, 'id' | 'created_at'>
 
 function useLandingForm() {
     const form = useForm<IBookForm>({
         defaultValues: {
-            adults_count: 1,
-            children_count: 0,
+            children: [],
+            gender: null,
+            birth_date: ""
         }
     })
     const [Loading, setLoading] = useState(false)
     const { notify } = useToast()
-    const { setValue, getValues } = form
+    const dialog = useBoolean(false)
+    const dialogSucess = useBoolean(false)
 
     async function created(formData: IBookForm) {
         try {
             setLoading(true)
             const supabase = await createClient()
             formData.tour = "راهپیمایی مشهد اربعین"
-            formData.adults_count = typeof formData.adults_count !== "number" ? parseInt(formData.adults_count) : formData.adults_count
-            formData.children_count = typeof formData.children_count !== "number" ? parseInt(formData.children_count) : formData.children_count
-            const { error } = await supabase
-                .from("booking")
-                .insert(formData);
+            const { error } = await supabase.from("booking").insert(formData);
             if (error) throw error
             setLoading(false)
             notify({ message: 'ثبت نام شما انجام شد با شما تماس خواهیم گرفت', status: 'success' })
+            dialogSucess.setTrue()
             form.reset()
         } catch (error: any) {
             setLoading(false)
@@ -39,12 +39,9 @@ function useLandingForm() {
         }
     }
 
-    function changeNumber({ field, operate }: { field: 'adults_count' | 'children_count', operate: 'plus' | 'minus' }) {
-        if (operate === 'plus') setValue(field, getValues(field) < 19 ? getValues(field) + 1 : getValues(field))
-        else setValue(field, getValues(field) > (field === 'adults_count' ? 1 : 0) ? getValues(field) - 1 : getValues(field))
-    }
+    const genderItems = [{ label: "مرد", value: "مرد" }, { label: "زن", value: "زن" }]
 
-    return { form, created, Loading, changeNumber }
+    return { form, created, Loading, genderItems, dialog, dialogSucess }
 }
 
 export default useLandingForm

@@ -21,12 +21,12 @@ function Hero() {
                 <div className="relative w-full md:w-[40%] flex flex-col gap-2 md:gap-6">
                     <div className="flex flex-col gap-1">
                         <strong className='text-4xl md:text-5xl'>ثبت‌نام</strong>
-                        <strong className='text-[var(--color-primary-hover)] text-3xl md:text-5xl'>راهپیمایی اربعین</strong>
+                        <strong className='text-[var(--color-primary-hover)] text-3xl md:text-5xl'>پویش پیاده روی</strong>
                     </div>
                     <p className='text-md md:text-lg px-8 md:px-0 font-medium md:font-light'>
-                        در مسیر عشق و ارادت به حضرت اباعبدالله الحسین (ع)، همراه شما هستیم.
+                        <strong className='font-bold'>مجمع عالی جوادالائمه</strong>
                         <br />
-                        <span className='hidden md:block'>برای برنامه‌ریزی بهتر و هماهنگی خدمات سفر، لطفاً اطلاعات خود را از طریق فرم زیر ثبت نمایید.</span>
+                        <span className=''>هم قدم با جوادلائمه به سوی رضای خدا</span>
                     </p>
                     <HeroIcons />
                 </div>

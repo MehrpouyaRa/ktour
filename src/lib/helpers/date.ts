@@ -1,10 +1,12 @@
 import dayjs from "dayjs";
 import jalaliday from "jalaliday";
 
-export const timeShamsi = (date: string) => {
-    dayjs.extend(jalaliday);
+dayjs.extend(jalaliday);
+
+export const timeShamsi = ({ date }: { date: string | number }) => {
+    if (!date) return
     return dayjs(date)
         .calendar("jalali")
         .locale("fa")
-        .format("HH:mm YYYY/MM/DD");
-}
+        .format("YYYY/MM/DD");
+};
