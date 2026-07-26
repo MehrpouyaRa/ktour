@@ -14,7 +14,7 @@ const font = Vazirmatn({
 });
 
 export const metadata: Metadata = {
-  title: "ثبت‌نام راهپیمایی اربعین",
+  title: "ثبت‌نام پویش پیاده روی",
   description: "در مسیر عشق و ارادت به حضرت اباعبدالله الحسین (ع)، همراه شما هستیم.",
 };
 
