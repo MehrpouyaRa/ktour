@@ -123,14 +123,12 @@ function ChildDialog({ open, triggerClose, triggerOpen, value, useFormRegister }
                         </Field>
                         <Field caption='کد ملی' Icon={BarcodeFillIcon} error={errors?.national_code?.message || ""}>
                             <Input
+                                maxLength={10}
+                                minLength={7}
                                 placeholder='کد ملی را وارد کنید'
                                 {
                                 ...register('national_code', {
                                     required: 'کد ملی را وارد کنید',
-                                    pattern: {
-                                        value: /^\d{10}$/,
-                                        message: 'کد ملی کودک را صحیح وارد کنید'
-                                    }
                                 })}
                             />
                         </Field>
