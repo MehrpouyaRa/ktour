@@ -84,12 +84,12 @@ function ChildDialog({ open, triggerClose, triggerOpen, value, useFormRegister }
                         <span className='text-xs border border-gray-300 rounded-sm px-2 py-1'>ویرایش</span>
                     </div>
                 ))}
-                <Button className="flex flex-row items-center" onClick={openModal} variant="destructive"><PlusIcon className='w-3' />اضافه کردن کودک</Button>
+                <Button className="flex flex-row items-center" onClick={openModal} variant="destructive"><PlusIcon className='w-3' />اضافه کردن فرزند</Button>
             </div>
             <Dialog open={open}>
                 <DialogContent className="flex flex-col sm:max-w-sm" showCloseButton={false}>
                     <DialogHeader>
-                        <DialogTitle>اضافه کردن کودک</DialogTitle>
+                        <DialogTitle>اضافه کردن فرزند</DialogTitle>
                     </DialogHeader>
                     <div className="flex flex-col gap-4">
                         <Field

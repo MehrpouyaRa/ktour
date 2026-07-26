@@ -158,7 +158,7 @@ function LandingForm() {
               </div>
 
               <div className="flex flex-col gap-2">
-                <FieldTitle caption='کودکان همراه' />
+                <FieldTitle caption='فرزندان همراه' />
                 <div className="flex flex-row gap-2 md:gap-6">
                   <ChildDialog
                     open={dialog.value}

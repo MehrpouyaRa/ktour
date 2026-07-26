@@ -164,10 +164,38 @@
   * {
     @apply border-border outline-ring/50;
   }
+
   body {
     @apply bg-background text-foreground;
   }
+
   html {
     @apply font-sans;
   }
+}
+
+/* کل تقویم */
+.rmdp-wrapper {
+  font-size: 18px;
+}
+
+/* روزها */
+.rmdp-day .sd {
+  font-size: 14px;
+}
+
+/* نام ماه و سال */
+.rmdp-header-values {
+  font-size: 20px;
+  font-weight: 600;
+}
+
+/* نام روزهای هفته */
+.rmdp-week-day {
+  font-size: 16px;
+}
+
+/* دکمه‌های قبلی و بعدی */
+.rmdp-arrow-container {
+  transform: scale(1.3);
 }

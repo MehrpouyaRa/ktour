@@ -6,6 +6,8 @@ function Datepicker({ onChange, value }: { value: string | number | null, onChan
     return <DatePicker
         calendar={persian}
         locale={persian_fa}
+        className="w-full"
+        containerClassName="w-full"
         value={value || ""}
         onChange={(date) => {
             if (date) onChange(new Date(date.toDate().getTime()).toISOString())
