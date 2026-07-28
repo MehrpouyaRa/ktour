@@ -128,6 +128,7 @@ function LandingForm() {
                       {
                       ...register('phone', {
                         required: 'شماره موبایل را وارد کنید',
+                        setValueAs: (value) => value.replace(/[۰-۹]/g, (d: string) => String('۰۱۲۳۴۵۶۷۸۹'.indexOf(d))).trim(),
                         pattern: {
                           value: /^((\+98|0)9\d{9})$/,
                           message: 'شماره موبایل خود را صحیح وارد کنید'
@@ -147,6 +148,7 @@ function LandingForm() {
                       {
                       ...register('phone_emergency', {
                         required: 'شماره تماس اضطراری را وارد کنید',
+                        setValueAs: (value) => value.replace(/[۰-۹]/g, (d: string) => String('۰۱۲۳۴۵۶۷۸۹'.indexOf(d))).trim(),
                         pattern: {
                           value: /^((\+98|0)9\d{9})$/,
                           message: 'شماره تماس را صحیح وارد کنید'
