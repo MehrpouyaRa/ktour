@@ -17,7 +17,7 @@ function DialogSuccess({ open, triggerClose }: IDialog) {
                     <p>برای <strong className='text-[var(--color-primary)]'>تکمیل فرایند ثبت نام</strong> و اخذکارت وکد زائر به آدرس ذیل مراجعه نمایید</p>
                     <p>نیشابور :خیابان مدرس روبه روی مدرس ۵ کارگزاری رسمی بیمه بوژمهرانی.</p>
                     <p>ساعات مراجعه ۹صبح تا ۱:۳۰</p>
-                    <p>بعدظهر ۱۷ تا ۲۰</p>
+                    <p>بعد از ظهر ۱۷ تا ۲۰</p>
                 </div>
                 <div className='flex flex-row w-full justify-between'>
                     <Button type="submit" onClick={triggerClose}>متوجه شدم</Button>

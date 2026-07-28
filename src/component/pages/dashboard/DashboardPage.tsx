@@ -1,34 +1,43 @@
 import AppContainer from '@/component/common/AppContainer'
 import { Button } from '@/component/common/ui/button';
+import { Input } from '@/component/common/ui/input';
 import { timeShamsi } from '@/lib/helpers/date';
 import { exportExcel } from '@/lib/helpers/excel';
 import { createClient } from '@/lib/helpers/supabase';
 import { IBook } from '@/lib/types/booking';
+import { useRouter, useSearchParams } from 'next/navigation';
 import React, { useEffect, useState } from 'react'
+import { useDebounceCallback } from 'usehooks-ts';
 
 function DashboardPage() {
   const [list, setList] = useState<IBook[]>([])
   const [page] = useState(1)
+  const router = useRouter()
+  const searchParams = useSearchParams()
+
+  const national_code = searchParams.get('national-code')
+  const submit = useDebounceCallback((code: string) => {
+    router.push(`/dashboard?national-code=${encodeURIComponent(code)}`)
+  }, 2000)
 
   async function fetch() {
-    const pageSize = 100
+    const pageSize = 500
     const from = (page - 1) * pageSize;
     const to = from + pageSize - 1;
 
     try {
       const supabase = await createClient()
-      const { data, error } = await supabase
+      const booking = supabase
         .from("booking")
         .select("*", { count: "exact" })
         .order("created_at", { ascending: false })
-        .range(from, to);
 
+      if (national_code) booking.ilike('national_code', `%${national_code}%`)
 
-      if (error) {
-        throw error
-      } else {
-        setList(data);
-      }
+      const { data, error } = await booking.range(from, to);
+
+      if (error) throw error
+      else setList(data);
     } catch (error) {
       console.error(error);
     }
@@ -36,7 +45,9 @@ function DashboardPage() {
 
   useEffect(() => {
     void fetch()
+  }, [national_code])
 
+  useEffect(() => {
     return () => {
       setList([])
     }
@@ -46,13 +57,17 @@ function DashboardPage() {
   return (
     <div className='flex justify-center'>
       <AppContainer className='flex flex-col gap-4'>
-        <div className='flex flex-row justify-start'>
+        <div className='flex flex-row justify-between items-center'>
           <Button variant="destructive" className="!w-100px" onClick={() => exportExcel(list)}>خروجی اکسل</Button>
+          <div className="">
+            <Input placeholder='جستجو کد ملی' maxLength={10} onChange={(e) => submit(e.target.value)} />
+          </div>
         </div>
         <div className="w-full overflow-x-auto rounded-lg border border-gray-200">
           <table className="min-w-[900px] w-full text-right text-sm">
             <thead className="bg-gray-100">
               <tr>
+                <th className="px-2 py-2 whitespace-nowrap">شناسه</th>
                 <th className="px-2 py-2 whitespace-nowrap">نام</th>
                 <th className="px-2 py-2 whitespace-nowrap">تور</th>
                 <th className="px-2 py-2 whitespace-nowrap">تاریخ تولد</th>
@@ -73,6 +88,7 @@ function DashboardPage() {
                   key={key}
                   className="border-t hover:bg-gray-50 transition-colors"
                 >
+                  <td className="px-2 py-2 whitespace-nowrap">{el.id}</td>
                   <td className="px-2 py-2 whitespace-nowrap">{el.name}</td>
                   <td className="px-2 py-2 whitespace-nowrap">{el.tour}</td>
                   <td className="px-2 py-2 whitespace-nowrap">{timeShamsi({ date: el.birth_date })}</td>

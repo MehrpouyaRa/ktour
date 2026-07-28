@@ -129,17 +129,11 @@ function ChildDialog({ open, triggerClose, triggerOpen, value, useFormRegister }
                                 {
                                 ...register('national_code', {
                                     required: 'کد ملی را وارد کنید',
-                                    validate: (value) => {
-                                        if (value.length !== 10) {
-                                            return "کد ملی باید ۱۰ رقم باشد";
-                                        }
-
-                                        if (!/^\d+$/.test(value)) {
-                                            return "کد ملی باید فقط شامل اعداد باشد";
-                                        }
-
-                                        return true;
-                                    },
+                                    setValueAs: (value) => value.replace(/[۰-۹]/g, (d: string) => String('۰۱۲۳۴۵۶۷۸۹'.indexOf(d))).trim(),
+                                    pattern: {
+                                        value: /^\d{10}$/,
+                                        message: 'کد ملی خود را صحیح وارد کنید'
+                                    }
                                 })}
                             />
                         </Field>

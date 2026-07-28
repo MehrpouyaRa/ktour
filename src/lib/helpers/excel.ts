@@ -6,6 +6,7 @@ export function exportExcel(list: IBook[]) {
   if (!list?.length) return;
 
   const data = list.map((item) => ({
+    "شناسه": item.id,
     "نام": item.name,
     "تور": item.tour,
     "تاریخ تولد": timeShamsi({ date: item.birth_date }),

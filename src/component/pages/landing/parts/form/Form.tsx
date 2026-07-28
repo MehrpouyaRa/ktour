@@ -15,7 +15,6 @@ import MedicalServicesIcon from '@iconify-react/line-md/medical-services';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/component/common/ui/select'
 import { Controller } from 'react-hook-form'
 import ChildDialog from './Dialog'
-
 import Datepicker from '@/component/common/Datepicker'
 import DialogSuccess from './DialogSuccess'
 
@@ -54,6 +53,7 @@ function LandingForm() {
                       {
                       ...register('national_code', {
                         required: 'کد ملی را وارد کنید',
+                        setValueAs: (value) => value.replace(/[۰-۹]/g, (d: string) => String('۰۱۲۳۴۵۶۷۸۹'.indexOf(d))).trim(),
                         pattern: {
                           value: /^\d{10}$/,
                           message: 'کد ملی خود را صحیح وارد کنید'
